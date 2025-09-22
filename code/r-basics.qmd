@@ -428,7 +428,8 @@ Here is how the RMSE is defined:
 
 $$
 \text{RMSE} = \sqrt\frac{\sum_{i=1}^n(\hat{y}_i-y_i)^2}{n}
-$$ where $\hat{y}_i$ denotes the prediction, and $y_i$ the actually observed value.
+$$ 
+where $\hat{y}_i$ denotes the prediction, and $y_i$ the actually observed value.
 
 In base R, we would do the following.
 
@@ -478,6 +479,7 @@ x = seq(from = 1, to = 5, by = 1)
 log(x)
 
 # now take the log the pipe way (write your code underneath)
+x %>% log()
 ```
 
 ```{r}
@@ -488,6 +490,7 @@ x = seq(from = 10, to = 5, by = -1)
 mean(round(sqrt(x), digits = 2))
 
 # the pipe way (write your code underneath)
+x %>% mean(round(sqrt(x), digits = 2))
 ```
 
 ## A quick note on naming things
