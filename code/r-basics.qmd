@@ -428,7 +428,8 @@ Here is how the RMSE is defined:
 
 $$
 \text{RMSE} = \sqrt\frac{\sum_{i=1}^n(\hat{y}_i-y_i)^2}{n}
-$$ where $\hat{y}_i$ denotes the prediction, and $y_i$ the actually observed value.
+$$ 
+where $\hat{y}_i$ denotes the prediction, and $y_i$ the actually observed value.
 
 In base R, we would do the following.
 
