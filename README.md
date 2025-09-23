@@ -40,7 +40,7 @@ These tools allows us to keep our project under *version-control* and share it e
 Next, we'll use Homebrew to install [Pixi](#pixi), which will allow us to easily manage and install multiple versions of R and Python separately from each other:
 
 ```bash
-curl -fsSL https://pixi.sh/install.sh | bash
+brew install pixi
 ```
 
 ## Download a copy of this Repository

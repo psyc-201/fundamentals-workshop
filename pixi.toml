@@ -37,20 +37,31 @@ extend-include = ["*.ipynb", "*.qmd"]
 ignore = ["W292", "E501", "E731", "E741", "F401", "E703"]
 
 # Tasks are shell commands we can call with pixi run myTask
-# We include some that configure the environment for you when you
-# use pixi run setup
+# We include some to help setup and run various quarto commands
 [tasks]
+
+# pixi run setup - sets up R and Python
 setup = [
 { task = "setup_rkernel" }, 
 { task = "setup_pykernel" }]
 
+# pixi run render - creates live preview for all qmd, ipynb, and md files in code/
 render = "quarto preview code/"
+
+# pixi run r - starts an R console
 r = "R"
 
+
+# pixi run build - saming thing as render but doesn't keep the live preview open
+build = "quarto render code/"
+
+# pixi run preview myfile.qmd - live preview of just a single file
 [tasks.preview]
 args =["name"]
 cmd = "quarto preview code/{{ name }}"
 
+# pixi run convert myfile.qmd - will generate myfile.ipynb
+# pixi run convert myfile.ipynb - will generate myfile.qmd
 [tasks.convert]
 args =["name"]
 cmd = "quarto convert code/{{ name }}"
@@ -65,6 +76,7 @@ cmd = """R -q -e "prefix <- normalizePath(file.path(R.home('home'), '..', '..'))
 [tasks.setup_pykernel]
 cmd = "python -c \"import sys, sysconfig, subprocess; p=sysconfig.get_paths()['data']; subprocess.check_call([sys.executable,'-m','ipykernel','install','--name','fundamentals-workshop-py','--display-name','Python (fundamentals-workshop)','--prefix',p])\""
 
-[tasks.kernels]
+# pixi run kernelslist - shows what kernels jupyter is aware of; mostly for debugging issues
+[tasks.kernelslist]
 cmd = "jupyter kernelspec list"
 
