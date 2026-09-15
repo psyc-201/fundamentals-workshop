@@ -4,12 +4,166 @@ format: live-html
 
 # Programming Fundamentals
 
-- markdown, Python, & R -> what are they
-  - example markdown, then example code cells
+::: {.callout-note}
+This page covers the basics of programming using examples in both R and Python. Each of the codeblocks below is **interactive**. You can edit the code and rerun it to see how the results change. We encourage you to play around to build your understanding
+:::
+
+## Basics 
+
+The most common way you will interact with Python and R is through a **REPL** (read-evaluate-print-loop):
+
+- You type out one or more statements (instructions)
+- You ask the language *interpreter* to *execute* (evaluate) 
+- It returns (prints) any output 
+- Repeat
+
+Try changing the statement below and rerun the code to see what happens:
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+# This is a comment R will ignore
+# Try changing the statement below and rerun the code to see what happens
+1 + 1
+```
+
+## Python
+
+```{pyodide}
+# This is a comment Python will ignore
+# Try changing the statement below and rerun the code to see what happens
+1 + 1
+```
+
+:::
 
 ## Values, variables, and types
 
+To do more than simple calculations we need to *store* inputs and outputs (**values**). To do this we declare **variables** which can store different **types** of values:
+
+### Text
+
+To store text as a variable we use single `''` or double `""` quotes to create a **string**: 
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+# We assign variables use <-
+a_string <- "hello psyc 201"
+
+# Typing a variable by itself prints out its value
+a_string
+```
+
+## Python
+
+```{pyodide}
+# We assign variables using =
+my_string = "hello psyc 201"
+
+# Typing a variable by itself prints out its value
+my_string
+```
+
+:::
+
+### Numbers
+
+We typically work with two kinds of numbers: *integers* (round numbers) and *floats* (contain decimals):
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+
+```
+
+## Python
+
+```{pyodide}
+# Integers
+my_number = 3
+my_number
+```
+
+```{pyodide}
+# Floats
+my_decimal = 3.1
+my_decimal
+```
+
+:::
+
+### Booleans
+
+Booleans store whether a value is *true* or *false*:
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+
+```
+
+## Python
+
+```{pyodide}
+
+```
+
+:::
+
+### Comparisons
+
+This allows us to compare values:
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+
+```
+
+## Python
+
+```{pyodide}
+# We can make comparisons
+my_decimal > my_number
+```
+
+```{pyodide}
+# Not equal
+my_decimal != my_number
+```
+
+```{pyodide}
+# We can intuitively combine comparisons with `and`
+my_number > 2 and my_number < 10
+```
+
+```{pyodide}
+# Using `or`
+my_number > 0 or my_number < 1000
+```
+
+```{pyodide}
+#| error: true
+# What happens here?
+my_number > my_string
+```
+
+:::
+
 ## Containers
+
+- Python: lists & dicts
 
 ## Control flow and logic
 

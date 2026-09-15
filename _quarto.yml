@@ -2,6 +2,11 @@ project:
   title: "201 Fundamentals Workshop"
   type: website
   output-dir: _site
+  resources:
+    - wheels/
+  render:
+    - "*.qmd"
+    - "!resources/"
 
 format:
   html:
@@ -30,7 +35,7 @@ website:
       - text: "Welcome"
         href: index.qmd
       - text: "Coding 101"
-        href: programming-basics.qmd
+        href: coming-from-r.qmd
       - text: "Coding Cheatsheets"
         href: cheatsheets.qmd
       - text: "Working with AI"
