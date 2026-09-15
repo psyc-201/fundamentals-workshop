@@ -18,20 +18,33 @@ format:
     df-print: kable
 
 website: 
-  title: "Fundamentals Workshop"
+  title: "PSYC 201b Fundamentals Workshop"
   back-to-top-navigation: true
   repo-url: https://github.com/psyc-201/fundamentals-workshop
   repo-actions: [source, issue]
-  page-footer: "2026, Eshin Jolly, Bria Long"
-  sidebar:
+  page-footer: "2026 Eshin Jolly & Bria Long"
+  sidebar: 
     style: "docked"
     search: true
     contents:
-      - text: "Weclome"
-        href: welcome.qmd
-      - text: "Programming Fundamentals"
+      - text: "Welcome"
+        href: index.qmd
+      - text: "Coding 101"
         href: programming-basics.qmd
-      - text: "Programming Cheatsheets"
-        href: programming-cheatsheets.qmd
+      - text: "Coding Cheatsheets"
+        href: cheatsheets.qmd
       - text: "Working with AI"
         href: working-with-ai.qmd
+      
+  # sidebar:
+  #   style: "docked"
+  #   search: true
+  #   contents:
+  #     - text: "Weclome"
+  #       href: welcome.qmd
+  #     - text: "Programming Fundamentals"
+  #       href: programming-basics.qmd
+  #     - text: "Programming Cheatsheets"
+  #       href: programming-cheatsheets.qmd
+  #     - text: "Working with AI"
+  #       href: working-with-ai.qmd

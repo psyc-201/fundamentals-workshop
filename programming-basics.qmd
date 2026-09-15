@@ -4,8 +4,37 @@ format: live-html
 
 # Programming Fundamentals
 
+- markdown, Python, & R -> what are they
+  - example markdown, then example code cells
+
+## Values, variables, and types
+
+## Containers
+
+## Control flow and logic
+
+## Functions and methods
+
+## Libraries
+
+- working with tabular data
+- plotting and visualization
+- statistical models
+
+## Debugging
+
+- https://serenceslab.ucsd.edu/python_for_psych_neuro.github.io/debugging/
+
+## Getting Help
+
+- references
+- link to working with AI
+
+
 You will learn R and Python...  
 Try running examples on this page...  
+
+https://serenceslab.ucsd.edu/python_for_psych_neuro.github.io/
 
 ::: {.panel-tabset group="language"}
 

@@ -1,0 +1,5 @@
+# Working with AI
+
+lorem ipsum
+
+https://serenceslab.ucsd.edu/python_for_psych_neuro.github.io/coding-with-ai/

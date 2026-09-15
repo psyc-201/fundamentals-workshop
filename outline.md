@@ -1,10 +1,11 @@
 # Outline
 
-## Get Setup for Reproducible Research
+## Get setup for reproducible research
 
 ### Essentials
 
 - git + github
+  - <https://stat-intuitions.com/guides/git-guide.html>
 - coding environment (RStudio, VSCode)
 
 ### Tools
@@ -17,7 +18,7 @@
   - quartopub
   - marimo/molab
 
-## Programming Fundamentals
+## Programming fundamentals
 
 - R & Python basics with tables
 - R & Python libraries with tables
@@ -28,8 +29,6 @@
 - John's guide
 - My principles
 
-
-## Additional Resources
+## Additional resources
 
 - links from last year
-
