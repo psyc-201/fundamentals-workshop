@@ -13,3 +13,8 @@ CLAUDE.md
 /.quarto/
 code/.DS_Store
 .DS_Store
+
+**/*.quarto_ipynb
+_site/
+_extensions/
+site_libs/

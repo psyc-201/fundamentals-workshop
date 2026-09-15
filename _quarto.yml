@@ -1,0 +1,37 @@
+project:
+  title: "201 Fundamentals Workshop"
+  type: website
+  output-dir: _site
+
+format:
+  html:
+    toc: true
+    toc-depth: 4
+    theme: cosmo
+    highlight-style: tango
+    df-print: kable
+  live-html:
+    toc: true
+    toc-depth: 4
+    theme: cosmo
+    highlight-style: tango
+    df-print: kable
+
+website: 
+  title: "Fundamentals Workshop"
+  back-to-top-navigation: true
+  repo-url: https://github.com/psyc-201/fundamentals-workshop
+  repo-actions: [source, issue]
+  page-footer: "2026, Eshin Jolly, Bria Long"
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - text: "Weclome"
+        href: welcome.qmd
+      - text: "Programming Fundamentals"
+        href: programming-basics.qmd
+      - text: "Programming Cheatsheets"
+        href: programming-cheatsheets.qmd
+      - text: "Working with AI"
+        href: working-with-ai.qmd
