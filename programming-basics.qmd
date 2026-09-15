@@ -1,5 +1,20 @@
 ---
 format: live-html
+webr:
+  packages:
+    - dplyr
+    - readr
+  resources:
+    - https://raw.githubusercontent.com/mwaskom/seaborn-data/master/penguins.csv
+pyodide:
+  packages:
+    - numpy
+    - scipy
+    # Polars was dropped from Pyodide 0.28+. This wheel is built by github.com/ejolly/polars-pyodide
+    # (fork of xlwings/polars-pyodide) and served from GitHub Pages, which sends the CORS headers micropip needs.
+    - https://eshinjolly.com/polars-pyodide/polars-1.33.1-cp313-cp313-pyodide_2025_0_wasm32.whl
+  resources:
+    - https://raw.githubusercontent.com/mwaskom/seaborn-data/master/penguins.csv
 ---
 
 # Programming Fundamentals

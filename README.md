@@ -10,3 +10,10 @@ This site is configured to by *polyglot*: both R and Python are mixed together o
 - One time install `uv` (Python package manager): `curl -LsSf https://astral.sh/uv/install.sh | sh`
 - Setup quarto WASM: `quarto add r-wasm/quarto-live`
 - Launch site: `uv run quarto preview` (`rm _site/` if quarto errors)
+
+---
+
+## Notes
+
+- Polars no longer supports WASM builds, but Eshin's personal fork of this project works just fine: <https://github.com/ejolly/polars-pyodide>
+- Quarto live can point micropip to a github pages static build for installation which is what the fork does
