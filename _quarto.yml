@@ -34,20 +34,5 @@ website:
         href: index.qmd
       - text: "Programming Basics"
         href: programming-basics.qmd
-      - text: "Python/R Differences"
-        href: coming-from-r.qmd
       - text: "Working with AI"
         href: working-with-ai.qmd
-      
-  # sidebar:
-  #   style: "docked"
-  #   search: true
-  #   contents:
-  #     - text: "Weclome"
-  #       href: welcome.qmd
-  #     - text: "Programming Fundamentals"
-  #       href: programming-basics.qmd
-  #     - text: "Programming Cheatsheets"
-  #       href: programming-cheatsheets.qmd
-  #     - text: "Working with AI"
-  #       href: working-with-ai.qmd

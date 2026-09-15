@@ -17,3 +17,4 @@ This site is configured to by *polyglot*: both R and Python are mixed together o
 
 - Polars no longer supports WASM builds, but Eshin's personal fork of this project works just fine: <https://github.com/ejolly/polars-pyodide>
 - Quarto live can point micropip to a github pages static build for installation which is what the fork does
+- Pyodide 0.28 has no `pyarrow`, so polars `.to_pandas()` fails in the browser. Convert with `pd.DataFrame(df.to_dicts())` when handing data to seaborn, and end plot cells with `plt.show()`
