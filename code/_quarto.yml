@@ -37,7 +37,8 @@ website:
         href: r-basics.qmd
       - text: "Python basics"
         href: python-basics.ipynb
+      - text: "Python basics (marimo)"
+        href: python-basics-marimo.qmd
       - text: "Cheatsheets"
         href: cheatsheets.qmd
-
 

@@ -40,6 +40,9 @@ ignore = ["W292", "E501", "E731", "E741", "F401", "E703"]
 # We include some to help setup and run various quarto commands
 [tasks]
 
+# Check the marimo lesson; empty cells are intentional student exercises.
+ok = "uvx marimo check --strict --ignore MF004 code/python-basics.py && quarto render code/python-basics-marimo.qmd"
+
 # pixi run setup - sets up R and Python
 setup = [
 { task = "setup_rkernel" }, 
@@ -79,4 +82,3 @@ cmd = "python -c \"import sys, sysconfig, subprocess; p=sysconfig.get_paths()['d
 # pixi run kernelslist - shows what kernels jupyter is aware of; mostly for debugging issues
 [tasks.kernelslist]
 cmd = "jupyter kernelspec list"
-
