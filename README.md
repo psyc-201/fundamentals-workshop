@@ -9,7 +9,8 @@ This site is configured to by *polyglot*: both R and Python are mixed together o
 - One time [install](https://quarto.org/docs/get-started/) `quarto`
 - One time install `uv` (Python package manager): `curl -LsSf https://astral.sh/uv/install.sh | sh`
 - Setup quarto WASM: `quarto add r-wasm/quarto-live`
-- Launch site: `uv run quarto preview` (`rm _site/` if quarto errors)
+- Launch site: `uv run quarto preview`
+- Build site: `uv run quarto render` (pushes to `main` do this automatically via GitHub Actions and deploy to <https://psyc-201.github.io/fundamentals-workshop/>)
 
 ---
 

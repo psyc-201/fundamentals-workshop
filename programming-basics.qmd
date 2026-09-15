@@ -9,7 +9,6 @@ webr:
     - https://raw.githubusercontent.com/mwaskom/seaborn-data/master/penguins.csv
 pyodide:
   packages:
-    - numpy
     - scipy
     # Polars was dropped from Pyodide 0.28+. This wheel is built by github.com/ejolly/polars-pyodide
     # (fork of xlwings/polars-pyodide) and served from GitHub Pages, which sends the CORS headers micropip needs.
@@ -677,13 +676,8 @@ from scipy.stats import ttest_ind
 
 ::: {.callout-warning}
 ## R vs Python: using a library's functions
-After `library(dplyr)` in R, you call `filter()` directly. After `import polars as pl` in Python, you call `pl.read_csv()` with the nickname in front. Python is explicit about where every function comes from, which avoids two libraries clashing over the same name. The nicknames are conventions everyone uses:
+After `library(dplyr)` in R, you call `filter()` directly. After `import polars as pl` in Python, you call `pl.read_csv()` with the nickname in front. Python is explicit about where every function comes from, which avoids two libraries clashing over the same name. The nicknames are conventions everyone uses.
 
-| Library | Import | Purpose |
-|---------|--------|---------|
-| `numpy` | `import numpy as np` | Arrays and math |
-| `polars` | `import polars as pl` | Dataframes |
-| `scipy` | `from scipy.stats import ttest_ind` | Statistics |
 :::
 
 ### Tabular data

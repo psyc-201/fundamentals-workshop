@@ -7,12 +7,6 @@ project:
     - "!resources/"
 
 format:
-  html:
-    toc: true
-    toc-depth: 4
-    theme: cosmo
-    highlight-style: tango
-    df-print: kable
   live-html:
     toc: true
     toc-depth: 4
