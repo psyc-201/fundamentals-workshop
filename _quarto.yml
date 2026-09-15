@@ -1,5 +1,5 @@
 project:
-  title: "201 Fundamentals Workshop"
+  title: "201 Fundamentals Guide"
   type: website
   output-dir: _site
   render:
@@ -21,7 +21,7 @@ format:
     df-print: kable
 
 website: 
-  title: "PSYC 201b Fundamentals Workshop"
+  title: "PSYC 201 Fundamentals Guide"
   back-to-top-navigation: true
   repo-url: https://github.com/psyc-201/fundamentals-workshop
   repo-actions: [source, issue]
@@ -30,7 +30,7 @@ website:
     style: "docked"
     search: true
     contents:
-      - text: "Welcome"
+      - text: "Getting Setup"
         href: index.qmd
       - text: "Programming Basics"
         href: programming-basics.qmd

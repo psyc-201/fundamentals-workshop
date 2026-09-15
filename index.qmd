@@ -1,4 +1,4 @@
-# Fundamentals Workshop Guide
+# PSYC 201 Fundamentals Guide
 
 ::: {.callout-note}
 You should use this site as a self-guided walkthrough. Follow the instructions and read the materials on each page at your own pace. The site will also remain available as a reference after this workshop.
@@ -18,7 +18,7 @@ We'll be making using of the macOS **terminal** for several steps below. Don't b
 *Though learning to navigate your computer using the terminal is a great skill to develop and will open up many things you can do. Like [save yourself from dinosaurs](https://www.youtube.com/watch?v=dxIPcbmo1_U).*
 :::
 
-## 1. Computer Setup
+### Homebrew
 
 First we'll install the [Homebrew](https://brew.sh/) a package manager for macOS. You can think of this like an "App store" for programs we run from our macOS terminal.
 

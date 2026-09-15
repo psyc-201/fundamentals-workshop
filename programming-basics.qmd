@@ -5,16 +5,12 @@ webr:
   packages:
     - dplyr
     - readr
-    - ggplot2
   resources:
     - https://raw.githubusercontent.com/mwaskom/seaborn-data/master/penguins.csv
 pyodide:
   packages:
     - numpy
     - scipy
-    - pandas
-    - matplotlib
-    - seaborn
     # Polars was dropped from Pyodide 0.28+. This wheel is built by github.com/ejolly/polars-pyodide
     # (fork of xlwings/polars-pyodide) and served from GitHub Pages, which sends the CORS headers micropip needs.
     - https://eshinjolly.com/polars-pyodide/polars-1.33.1-cp313-cp313-pyodide_2025_0_wasm32.whl
@@ -660,7 +656,6 @@ Neither language ships with everything you need for data analysis. **Libraries**
 # library() loads a package and makes all its functions available
 library(dplyr)
 library(readr)
-library(ggplot2)
 
 # Or use a single function without loading the package
 dplyr::n_distinct(c(1, 1, 2))
@@ -672,9 +667,6 @@ dplyr::n_distinct(c(1, 1, 2))
 #| autorun: true
 # import loads a library. as gives it a short nickname
 import polars as pl
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
 
 # Or import a single function
 from polars import col
@@ -691,7 +683,7 @@ After `library(dplyr)` in R, you call `filter()` directly. After `import polars 
 |---------|--------|---------|
 | `numpy` | `import numpy as np` | Arrays and math |
 | `polars` | `import polars as pl` | Dataframes |
-| `seaborn` | `import seaborn as sns` | Statistical plots |
+| `scipy` | `from scipy.stats import ttest_ind` | Statistics |
 :::
 
 ### Tabular data
@@ -745,37 +737,6 @@ penguins.head()
 ::: {.callout-note}
 ## dplyr and polars speak the same language
 `filter`, `group_by`, and `summarize`/`agg` do the same jobs in both. R pipes with `|>`; Python chains with `.` and wraps the whole chain in parentheses so it can span lines.
-:::
-
-### Plotting
-
-::: {.panel-tabset group="language"}
-
-## R
-
-```{webr}
-#| fig-width: 6
-#| fig-height: 4
-#| warning: false
-ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g, color = species)) +
-  geom_point()
-```
-
-## Python
-
-```{pyodide}
-sns.scatterplot(
-    data=pd.DataFrame(penguins.to_dicts()),
-    x="flipper_length_mm", y="body_mass_g", hue="species",
-)
-plt.show()
-```
-
-:::
-
-::: {.callout-note}
-## ggplot2 and seaborn
-Both map columns to visual properties: `aes(x, y, color)` in ggplot2 becomes `x=, y=, hue=` in seaborn. seaborn expects a pandas dataframe. On your own computer you would write `penguins.to_pandas()`; that needs a library the browser cannot load, so here we convert through a list of dicts instead.
 :::
 
 ### Statistics
