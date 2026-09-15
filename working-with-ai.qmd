@@ -1,0 +1,33 @@
+# AI Guidance
+
+::: {.callout-note}
+
+Below are some general tips and guidance if you choose to use AI assistance in your work. Our most important guidance: **don't outsource your own thinking.** Working hard and struggling through a challenge is *how you acquire expertise.* Any tool you use should be in service of building knowledge and understanding.
+:::
+
+## Tips
+
+- **Use tools to elevate your thinking, not replace it.** The goal is leverage: less time on drudgery, more time on framing, reasoning, checking, and learning.
+- **Use tools to make research more thorough, not merely faster.** Spend saved execution time on stronger alternatives, better checks, and deeper interrogation of the evidence.
+- **Distinguish execution bottlenecks from understanding bottlenecks.** Automate work that is slow because it is laborious; protect work that is slow because doing it builds understanding.
+- **Protect productive friction.** Struggle, debugging, failed attempts, close reading, and working through messy data are often how intuition and expertise are formed. Do not automate away the parts you still need to learn.
+- **Own the reasoning even when AI does the work.** You should be able to explain what was done, why it was done, what assumptions it depends on, and where it might fail.
+- **Expertise is knowing what problem to solve.** Faster execution does not rescue a poorly framed question; use human judgment to decide what is actually worth investigating.
+- **Stay close to choices that change what the evidence means.** Inclusion, exclusion, cleaning, coding, measurement, aggregation, and transformation decisions shape the material you later interpret.
+- **AI can help generate alternatives, but you should ask what would discriminate among them.** More hypotheses or interpretations are useful only when they create meaningful tests rather than false variety.
+- **Investigate disagreement before asking for synthesis.** When findings conflict, develop competing explanations and identify what evidence would distinguish them instead of forcing an early coherent story.
+- **Treat understanding as a bottleneck worth managing.** When AI can produce faster than you can absorb, slow the loop enough to rebuild a usable mental model before moving on.
+- **Use speed regulators that test understanding.** Explain the result in your own words, inspect raw outputs, reproduce key steps, answer questions about the method, or modify the analysis without blindly asking AI to do it for you.
+- **Avoid cognitive debt.** Moving quickly while losing track of why decisions were made, how a pipeline works, or what an analysis actually represents creates future fragility even when the output is correct today.
+- **Preserve shared understanding.** In collaborative work, make sure important assumptions, decisions, and reasons live somewhere the team can inspect rather than only inside an AI conversation or one person's head.
+- **Use automation to shorten feedback loops, not eliminate contact with the phenomenon.** Better tools should help you run, inspect, revise, and learn more quickly—not turn data collection, preprocessing, or analysis into an unquestioned black box.
+
+## References
+
+- Bakhshi, S. (2026, August 15). *Stop automating research one task at a time*. Substack. https://saeidehbakhshi.substack.com/p/stop-automating-research-one-task
+- Bakhshi, S. (2026, August 18). *Research can move faster than understanding*. Substack. https://saeidehbakhshi.substack.com/p/research-can-move-faster-than-understanding
+- Faye, L. (2026, July 22). *AI coding will prevent expertise*. https://larsfaye.com/articles/ai-coding-will-prevent-expertise
+- Ghosh, S. (n.d.). *Neurosalience S6E10 with Satrajit Ghosh: How better tools can transform brain science* [Video]. YouTube. https://www.youtube.com/watch?v=seDZ2K9Q4aM
+- John, K. (n.d.). *A.I. should elevate your thinking, not replace it*. https://www.koshyjohn.com/blog/ai-should-elevate-your-thinking-not-replace-it/
+- Litt, G. (2026, July 2). *Understanding is the new bottleneck*. https://www.geoffreylitt.com/2026/07/02/understanding-is-the-new-bottleneck
+- Storey, M. (2026, February 9). *How generative and agentic AI shift concern from technical debt to cognitive debt*. https://margaretstorey.com/blog/2026/02/09/cognitive-debt/

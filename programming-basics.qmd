@@ -1,0 +1,912 @@
+---
+title: "Programming Basics"
+format: live-html
+webr:
+  packages:
+    - dplyr
+    - readr
+  resources:
+    - https://raw.githubusercontent.com/mwaskom/seaborn-data/master/penguins.csv
+pyodide:
+  packages:
+    - scipy
+    # Polars was dropped from Pyodide 0.28+. This wheel is built by github.com/ejolly/polars-pyodide
+    # (fork of xlwings/polars-pyodide) and served from GitHub Pages, which sends the CORS headers micropip needs.
+    - https://eshinjolly.com/polars-pyodide/polars-1.33.1-cp313-cp313-pyodide_2025_0_wasm32.whl
+  resources:
+    - https://raw.githubusercontent.com/mwaskom/seaborn-data/master/penguins.csv
+---
+
+::: {.callout-tip}
+This page covers programming basics with examples in R and Python. Every code block is **interactive**: edit the code and press **Run Code** to see what changes. We encourage you to play around!
+
+You can click to switch between languaged. Picking **R** or **Python** in one tabset switches every tabset on the page. Callouts marked **R vs Python** point out the places where the two languages behave differently in notable ways.
+:::
+
+## Basics
+
+The most common way you will interact with R and Python is through a **REPL** (read-evaluate-print-loop):
+
+- You type out one or more statements (instructions)
+- You ask the language *interpreter* to *execute* (evaluate) them
+- It returns (prints) any output
+- Repeat
+
+Run the code cell below to see the output of `1+1`
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+# This is a comment R will ignore
+# Try changing the statement below and rerun the code to see what happens
+1 + 1
+```
+
+## Python
+
+```{pyodide}
+# This is a comment Python will ignore
+# Try changing the statement below and rerun the code to see what happens
+1 + 1
+```
+
+:::
+
+## Values, variables, and types
+
+To do more than simple calculations we need to *store* inputs and outputs (**values**). To do this we declare **variables**, which can hold different **types** of values.
+
+### Text
+
+To store text we wrap it in single `''` or double `""` quotes to create a **string**:
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+#| autorun: true
+# We assign variables using <-
+my_string <- "hello psyc 201"
+
+# Typing a variable by itself prints its value
+my_string
+```
+
+## Python
+
+```{pyodide}
+#| autorun: true
+# We assign variables using =
+my_string = "hello psyc 201"
+
+# Typing a variable by itself prints its value
+my_string
+```
+
+:::
+
+::: {.callout-warning}
+## R vs Python: assignment
+R assigns with `<-` (it also accepts `=`). Python only uses `=`. In both languages a single `=` **assigns** a value and a double `==` **compares** two values.
+:::
+
+### Numbers
+
+We typically work with two kinds of numbers: *integers* (whole numbers) and *floats* (numbers with decimals):
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+#| autorun: true
+my_number <- 3
+my_decimal <- 3.1
+
+# class() tells us what type a value is
+class(my_number)
+```
+
+```{webr}
+class(my_decimal)
+````
+
+## Python
+
+```{pyodide}
+#| autorun: true
+my_number = 3
+my_decimal = 3.1
+
+# type() tells us what type a value is
+type(my_number)
+```
+
+```{pyodide}
+type(my_decimal)
+```
+
+:::
+
+::: {.callout-warning}
+## R vs Python: integers and floats
+R treats both `3` and `3.1` as `numeric` unless you ask for an integer with `3L`. Python keeps `int` and `float` separate, but mixing them is safe as Python will convert to higher precision floats for you.
+:::
+
+### Booleans
+
+Booleans store whether something is *true* or *false*:
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+is_sunny <- TRUE
+is_raining <- FALSE
+
+class(is_sunny)
+```
+
+## Python
+
+```{pyodide}
+is_sunny = True
+is_raining = False
+
+type(is_sunny)
+```
+
+:::
+
+::: {.callout-warning}
+## R vs Python: spelling booleans
+R writes `TRUE` and `FALSE`. Python writes `True` and `False`. Typing `TRUE` in Python gives a `NameError` because Python thinks you are referring to a variable you never defined.
+:::
+
+### Comparisons
+
+Comparing values produces booleans. We combine comparisons with *and*, *or*, and *not*:
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+my_decimal > my_number
+```
+
+```{webr}
+# Not equal
+my_decimal != my_number
+```
+
+```{webr}
+# Combine with & (and), | (or), and ! (not)
+my_number > 2 & my_number < 10
+```
+
+```{webr}
+my_number > 100 | my_number < 5
+```
+
+```{webr}
+!(my_number == 3)
+```
+
+## Python
+
+```{pyodide}
+my_decimal > my_number
+```
+
+```{pyodide}
+# Not equal
+my_decimal != my_number
+```
+
+```{pyodide}
+# Combine with and, or, and not
+my_number > 2 and my_number < 10
+```
+
+```{pyodide}
+my_number > 100 or my_number < 5
+```
+
+```{pyodide}
+not (my_number == 3)
+```
+
+:::
+
+What happens when we compare a number to a string?
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+#| error: true
+# R silently converts the number to text and compares alphabetically
+my_number > my_string
+```
+
+```{webr}
+#| error: true
+# R also converts numbers to text for you when pasting strings together
+paste("age:", 25)
+```
+
+## Python
+
+```{pyodide}
+#| error: true
+# Python refuses to compare a number to a string
+my_number > my_string
+```
+
+```{pyodide}
+#| error: true
+# Python also refuses to glue a string to a number
+"age: " + 25
+```
+
+:::
+
+::: {.callout-important}
+## R vs Python: converting between types
+R quietly converts types for you when it can. Python never does, and raises a `TypeError` instead. To mix types in Python, convert them yourself with `str()`, `int()`, or `float()`:
+
+```{pyodide}
+"age: " + str(25)
+```
+
+Python's strictness is a feature. Silent conversion is a common source of bugs in data analysis.
+:::
+
+## Containers
+
+Most data analysis involves *many* values at once. Both languages have a container for an ordered sequence of values:
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+#| autorun: true
+# A vector, created with c()
+fruits <- c("apple", "banana", "cherry", "date")
+fruits
+```
+
+```{webr}
+# length() tells us how many items it holds
+length(fruits)
+```
+
+## Python
+
+```{pyodide}
+#| autorun: true
+# A list, created with []
+fruits = ["apple", "banana", "cherry", "date"]
+fruits
+```
+
+```{pyodide}
+# len() tells us how many items it holds
+len(fruits)
+```
+
+:::
+
+::: {.callout-note}
+## Vectors vs lists
+An R vector holds values of a single type (all numbers, or all strings). A Python list can mix types, so `[1, "two", 3.0]` is allowed. In practice you will rarely want a mixed list.
+:::
+
+### Indexing and slicing
+
+To pull out individual items we **index** with square brackets. To pull out a range of items we **slice**:
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+# First item (R starts counting at 1)
+fruits[1]
+```
+
+```{webr}
+# Last item
+fruits[length(fruits)]
+```
+
+```{webr}
+# Items 1 through 2 (both ends included)
+fruits[1:2]
+```
+
+```{webr}
+# Everything except the first item
+fruits[-1]
+```
+
+## Python
+
+```{pyodide}
+# First item (Python starts counting at 0)
+fruits[0]
+```
+
+```{pyodide}
+# Last item (negative numbers count from the end)
+fruits[-1]
+```
+
+```{pyodide}
+# Items 0 up to but NOT including 2
+fruits[0:2]
+```
+
+```{pyodide}
+# Leave off start or stop to mean "from the beginning" or "to the end"
+fruits[1:]
+```
+
+:::
+
+::: {.callout-important}
+## R vs Python: counting from 0 or 1
+This is the first big difference to get used to. **R counts from 1, Python counts from 0**, and Python slices exclude the stop position. The rule applies everywhere: the first row of a Python dataframe is row 0.
+
+| What you want | R | Python |
+|---------------|---|--------|
+| First item | `x[1]` | `x[0]` |
+| First 3 items | `x[1:3]` | `x[0:3]` or `x[:3]` |
+| Last item | `x[length(x)]` or `tail(x, 1)` | `x[-1]` |
+
+Negative numbers also mean different things. In R `x[-1]` *removes* the first item. In Python `x[-1]` *returns* the last item.
+:::
+
+### Adding items
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+# c() builds a new, longer vector, so we assign it back to fruits
+fruits <- c(fruits, "elderberry")
+fruits
+```
+
+## Python
+
+```{pyodide}
+# .append() changes the list in place. Notice it prints nothing
+fruits.append("elderberry")
+```
+
+```{pyodide}
+fruits
+```
+
+:::
+
+::: {.callout-warning}
+## R vs Python: `.append()` returns nothing
+In R you get a new vector back and assign it. In Python `.append()` modifies the existing list and returns `None`. Never write `fruits = fruits.append("fig")`, which overwrites your list with `None`. Call `fruits.append("fig")` on its own line instead.
+:::
+
+### Named collections
+
+Sometimes we want to look values up by *name* instead of position. Think of these as **one row of a dataframe**: each name is a column and each value is that row's entry:
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+# A named list
+participant <- list(id = "p01", age = 22, condition = "easy")
+
+# Look up by name with $
+participant$age
+```
+
+```{webr}
+# Add a new entry
+participant$score <- 0.85
+str(participant)
+```
+
+## Python
+
+```{pyodide}
+# A dictionary (dict) of key: value pairs
+participant = {"id": "p01", "age": 22, "condition": "easy"}
+
+# Look up by key with []
+participant["age"]
+```
+
+```{pyodide}
+# Add a new entry
+participant["score"] = 0.85
+participant
+```
+
+:::
+
+## Control flow
+
+So far every line has run once, top to bottom. **Control flow** lets us make decisions and repeat work.
+
+### Conditionals
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+score <- 85
+
+if (score >= 90) {
+  print("A")
+} else if (score >= 80) {
+  print("B")
+} else {
+  print("C or below")
+}
+```
+
+## Python
+
+```{pyodide}
+score = 85
+
+if score >= 90:
+    print("A")
+elif score >= 80:
+    print("B")
+else:
+    print("C or below")
+```
+
+:::
+
+::: {.callout-warning}
+## R vs Python: braces vs indentation
+R uses `{ }` to mark which lines belong to an `if` or `for`. Python uses a `:` followed by **indentation**, and the indentation is not optional. Forgetting to indent gives an `IndentationError`:
+
+```{pyodide}
+#| error: true
+if score > 50:
+print("passing")
+```
+
+Most editors indent for you, so you will usually hit this error when editing existing code.
+:::
+
+### Loops
+
+A `for` loop runs the same block of code once for each item in a collection:
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+for (fruit in fruits) {
+  print(fruit)
+}
+```
+
+```{webr}
+# Loop over a range of numbers
+for (i in 1:3) {
+  print(i ** 2)
+}
+```
+
+```{webr}
+# Loop over positions AND items
+for (i in seq_along(fruits)) {
+  print(paste(i, fruits[i]))
+}
+```
+
+## Python
+
+```{pyodide}
+for fruit in fruits:
+    print(fruit)
+```
+
+```{pyodide}
+# Loop over a range of numbers
+for i in range(3):
+    print(i ** 2)
+```
+
+```{pyodide}
+# Loop over positions AND items
+for i, fruit in enumerate(fruits):
+    print(i, fruit)
+```
+
+:::
+
+::: {.callout-warning}
+## R vs Python: `1:3` vs `range(3)`
+R's `1:3` gives `1, 2, 3`. Python's `range(3)` gives `0, 1, 2`. Like slicing, it starts at 0 and stops before 3. To get `1, 2, 3` in Python write `range(1, 4)`.
+:::
+
+## Functions and methods
+
+A **function** packages up a block of code so you can reuse it. You have been calling built-in functions all along (`print()`, `length()`, `len()`). Here is how to write your own:
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+#| autorun: true
+calculate_mean <- function(values) {
+  total <- sum(values)
+  n <- length(values)
+  return(total / n)
+}
+
+calculate_mean(c(1, 2, 3, 4, 5))
+```
+
+```{webr}
+# Arguments can have default values
+greet <- function(name, greeting = "Hello") {
+  paste0(greeting, ", ", name, "!")
+}
+
+greet("Alex")
+greet("Alex", greeting = "Hi")
+```
+
+## Python
+
+```{pyodide}
+#| autorun: true
+def calculate_mean(values):
+    total = sum(values)
+    n = len(values)
+    return total / n
+
+calculate_mean([1, 2, 3, 4, 5])
+```
+
+```{pyodide}
+# Arguments can have default values
+def greet(name, greeting="Hello"):
+    return f"{greeting}, {name}!"
+
+print(greet("Alex"))
+print(greet("Alex", greeting="Hi"))
+```
+
+:::
+
+::: {.callout-warning}
+## R vs Python: defining functions
+R uses the `function` keyword and braces. Python uses `def`, a colon, and indentation. R returns the last expression automatically, so `return()` is optional. Python only returns what you explicitly `return`.
+:::
+
+### Methods
+
+Python attaches some functions directly to values. These are **methods**, and you call them with a `.`:
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+# R uses plain functions
+toupper(my_string)
+```
+
+```{webr}
+# Chaining steps with the pipe |>
+my_string |> toupper() |> tolower()
+```
+
+## Python
+
+```{pyodide}
+# Python strings have an .upper() method
+my_string.upper()
+```
+
+```{pyodide}
+# Chaining steps with .
+my_string.upper().lower()
+```
+
+:::
+
+::: {.callout-note}
+## R vs Python: methods and chaining
+When you see `my_string.upper()` in Python, read it as `toupper(my_string)`. Methods let Python chain steps as `object.method().method()`, which plays the same role as R's pipe `|>` (you will also see the older `%>%` from the tidyverse). But not every Python method is chainable: `.append()` above changed the list and returned nothing.
+:::
+
+## Libraries
+
+Neither language ships with everything you need for data analysis. **Libraries** (also called packages) add functions for reading data, plotting, and statistics. You load them at the top of your code:
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+#| autorun: true
+# library() loads a package and makes all its functions available
+library(dplyr)
+library(readr)
+
+# Or use a single function without loading the package
+dplyr::n_distinct(c(1, 1, 2))
+```
+
+## Python
+
+```{pyodide}
+#| autorun: true
+# import loads a library. as gives it a short nickname
+import polars as pl
+
+# Or import a single function
+from polars import col
+from scipy.stats import ttest_ind
+```
+
+:::
+
+::: {.callout-warning}
+## R vs Python: using a library's functions
+After `library(dplyr)` in R, you call `filter()` directly. After `import polars as pl` in Python, you call `pl.read_csv()` with the nickname in front. Python is explicit about where every function comes from, which avoids two libraries clashing over the same name. The nicknames are conventions everyone uses.
+
+:::
+
+### Tabular data
+
+Most data analysis happens in a dataframe, a table with named columns and one row per observation. The examples use the [Palmer Penguins](https://allisonhorst.github.io/palmerpenguins/) dataset, already loaded in your browser as `penguins.csv`:
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+#| autorun: true
+penguins <- read_csv("penguins.csv", show_col_types = FALSE)
+head(penguins)
+```
+
+```{webr}
+# Pipe the data through a series of verbs
+penguins |>
+  filter(!is.na(body_mass_g)) |>
+  group_by(species) |>
+  summarize(
+    mean_mass = mean(body_mass_g),
+    n = n()
+  )
+```
+
+## Python
+
+```{pyodide}
+#| autorun: true
+penguins = pl.read_csv("penguins.csv")
+penguins.head()
+```
+
+```{pyodide}
+# Chain the data through a series of methods
+(
+    penguins
+    .filter(col("body_mass_g").is_not_null())
+    .group_by("species")
+    .agg(
+        mean_mass=col("body_mass_g").mean(),
+        n=pl.len(),
+    )
+)
+```
+
+:::
+
+::: {.callout-note}
+## dplyr and polars speak the same language
+`filter`, `group_by`, and `summarize`/`agg` do the same jobs in both. R pipes with `|>`; Python chains with `.` and wraps the whole chain in parentheses so it can span lines.
+:::
+
+### Statistics
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+two_species <- penguins |>
+  filter(species %in% c("Adelie", "Gentoo"))
+
+t.test(body_mass_g ~ species, data = two_species)
+```
+
+## Python
+
+```{pyodide}
+adelie = penguins.filter(col("species") == "Adelie")["body_mass_g"].drop_nulls()
+gentoo = penguins.filter(col("species") == "Gentoo")["body_mass_g"].drop_nulls()
+
+ttest_ind(adelie, gentoo, equal_var=False)
+```
+
+:::
+
+## Debugging
+
+An error is the language telling you what went wrong and where. Read an error message from the **bottom up**: the last line names the problem, and the lines above show where it happened. Here are the four you will meet most often:
+
+### Unknown name
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+#| error: true
+mean_score <- 85
+print(mean_scroe)
+```
+
+## Python
+
+```{pyodide}
+#| error: true
+mean_score = 85
+print(mean_scroe)
+```
+
+:::
+
+Almost always a typo, or a variable you have not defined *yet* (did you run the earlier cell?).
+
+### Syntax error
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+#| error: true
+print("hello"
+```
+
+## Python
+
+```{pyodide}
+#| error: true
+print("hello"
+```
+
+:::
+
+The language cannot parse what you typed: an unclosed parenthesis or quote, a stray line break, or a missing `:` in Python.
+
+### Wrong type
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+#| error: true
+"76" + 12
+```
+
+## Python
+
+```{pyodide}
+#| error: true
+"76" + 12
+```
+
+:::
+
+The operation is fine but the input is the wrong kind of value. Check what you have with `class()` or `type()`.
+
+### Position that does not exist
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+#| error: true
+fruits[10]
+```
+
+## Python
+
+```{pyodide}
+#| error: true
+fruits[10]
+```
+
+:::
+
+::: {.callout-warning}
+## R vs Python: R is quieter
+R returns `NA` for a position that does not exist and keeps going. Python stops with an `IndexError`. Python's habit of stopping early is annoying in the moment but catches mistakes that R would let slip through to your results.
+:::
+
+### A 60-second debugging workflow
+
+1. **Read the last line** of the error and name the type of problem out loud.
+2. **Check your assumptions** at that line: `class(x)` or `type(x)`, `length(x)` or `len(x)`, the column names of your dataframe.
+3. **Shrink the problem**: run just the failing piece on its own. For a broken chain, remove steps from the end until it works, then add them back one at a time.
+4. **Change one thing and rerun.** Rerunning is free.
+5. Still stuck? **Paste the full error message** into a search engine or AI assistant. The exact wording is what makes errors searchable. See [Working with AI](working-with-ai.qmd) for how to do this well.
+
+## Getting help
+
+Both languages have built-in documentation for every function:
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+# ? or help() opens documentation
+?mean
+```
+
+## Python
+
+```{pyodide}
+# help() prints documentation
+help(len)
+```
+
+```{pyodide}
+# dir() lists every method a value has
+dir(my_string)
+```
+
+:::
+
+## Playground
+
+Feel free to use the empty code blocks below try to things out
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{webr}
+# Your code here
+
+```
+
+## Python
+
+```{pyodide}
+# Your code here
+
+```
+
+:::

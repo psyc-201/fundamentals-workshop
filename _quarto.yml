@@ -1,0 +1,32 @@
+project:
+  title: "201 Fundamentals Guide"
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "!resources/"
+
+format:
+  live-html:
+    toc: true
+    toc-depth: 4
+    theme: cosmo
+    highlight-style: tango
+    df-print: kable
+
+website: 
+  title: "PSYC 201 Fundamentals Guide"
+  back-to-top-navigation: true
+  repo-url: https://github.com/psyc-201/fundamentals-workshop
+  repo-actions: [source, issue]
+  page-footer: "2026 Eshin Jolly & Bria Long"
+  sidebar: 
+    style: "docked"
+    search: true
+    contents:
+      - text: "Getting Setup"
+        href: index.qmd
+      - text: "Programming Basics"
+        href: programming-basics.qmd
+      - text: "Working with AI"
+        href: working-with-ai.qmd

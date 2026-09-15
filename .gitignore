@@ -1,15 +1,8 @@
-# pixi environments
-.pixi
-code/*_files
-code/.jupyter_cache
-code/*_cache
-code/*_files
-code/*.html
-code/_output
-code/.quarto
-pixi.lock
-CLAUDE.md
-
 /.quarto/
 code/.DS_Store
 .DS_Store
+**/*.quarto_ipynb
+_site/
+_extensions/
+site_libs/
+resources/
